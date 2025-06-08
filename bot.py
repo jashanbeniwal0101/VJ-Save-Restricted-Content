@@ -38,6 +38,20 @@ class Bot(Client):
         await super().stop()
         LOGGER(__name__).info('Bot Stopped Bye')
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s %(filename)s:%(lineno)d %(levelname).1s] %(message)s",
+    datefmt="%Y-%m-%d|%H:%M:%S",
+    handlers=[
+        logging.handlers.RotatingFileHandler(
+            'log_file.txt',
+            maxBytes=5000000,
+            backupCount=3
+        ),
+        logging.StreamHandler()
+    ]
+)
+
 if __name__ == '__main__':
     bot = Bot()
     try:
