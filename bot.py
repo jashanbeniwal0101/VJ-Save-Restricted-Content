@@ -1,7 +1,9 @@
 import logging
 import asyncio
-from web import web, web_serve
+
 from pyrogram import Client
+from web import web, web_serve
+from logging.handlers import RotatingFileHandler
 from config import API_ID, API_HASH, BOT_TOKEN, PORT
 
 
@@ -43,7 +45,7 @@ logging.basicConfig(
     format="[%(asctime)s %(filename)s:%(lineno)d %(levelname).1s] %(message)s",
     datefmt="%Y-%m-%d|%H:%M:%S",
     handlers=[
-        logging.handlers.RotatingFileHandler(
+        RotatingFileHandler(
             'log_file.txt',
             maxBytes=5000000,
             backupCount=3
