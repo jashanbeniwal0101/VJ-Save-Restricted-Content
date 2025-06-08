@@ -2,6 +2,7 @@ pyrofork==2.3.45
 tgcrypto
 motor
 Flask==1.1.2
+aiohttp
 gunicorn==20.1.0
 Jinja2==3.0.3
 werkzeug==2.0.2
