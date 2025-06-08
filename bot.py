@@ -1,7 +1,8 @@
 import logging
 import asyncio
+from web import web, web_serve
 from pyrogram import Client
-from config import API_ID, API_HASH, BOT_TOKEN
+from config import API_ID, API_HASH, BOT_TOKEN, PORT
 
 
 def LOGGER(name: str) -> logging.Logger:
@@ -26,6 +27,11 @@ class Bot(Client):
             
         await super().start()
         LOGGER(__name__).info('Bot Started Powered By @VJ_Botz')
+
+        #Added by @v15hnuf6n1x
+        app = web.AppRunner(await web_serve())
+        await app.setup()
+        await web.TCPSite(app, "0.0.0.0", PORT).start()
 
     async def stop(self, *args):
 
